@@ -14,6 +14,8 @@ env/
 output/*.wav
 output/_part_*.wav
 !output/.gitkeep
+!output/example_1.wav
+!output/example_2.wav
 
 Thumbs.db
 .DS_Store

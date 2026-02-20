@@ -1,15 +1,16 @@
 ![Project Logo](assets/logov2.png)
 
-# Coqui XTTS v2 Turkish TTS (Local-First)
+# Coqui XTTS v2 Turkish TTS (Local)
 
 **TTS model:** [Coqui XTTS v2](https://docs.coqui.ai/en/latest/models/xtts.html)
 
-A local-first Turkish text-to-speech app built with Coqui XTTS v2 and Gradio.
+A local Turkish text-to-speech app built with Coqui XTTS v2 and Gradio.
 Run it on your own computer and generate WAV files without managing a backend server.
 
 ## Table of Contents
 
 - [Overview](#overview)
+- [Web UI Preview](#web-ui-preview)
 - [Key Features](#key-features)
 - [Recommended Voice](#recommended-voice)
 - [System Requirements](#system-requirements)
@@ -18,6 +19,7 @@ Run it on your own computer and generate WAV files without managing a backend se
 - [CLI Mode](#cli-mode)
 - [Configuration](#configuration)
 - [Output](#output)
+- [Example Outputs](#example-outputs)
 - [Troubleshooting](#troubleshooting)
 - [Privacy](#privacy)
 - [License](#license)
@@ -32,6 +34,10 @@ This project provides a simple workflow for Turkish content creators:
 4. Generate a WAV file
 
 The UI runs locally on `localhost`, and all outputs are saved to the `output/` folder.
+
+## Web UI Preview
+
+![Gradio Web UI](assets/webui.png)
 
 ## Key Features
 
@@ -130,6 +136,13 @@ python app.py --mode gradio --host 127.0.0.1 --port 7860
 - Directory: `output/`
 - Format: `.wav`
 - Long text is merged into a single final output file
+
+## Example Outputs
+
+You can preview sample generated files here:
+
+- [example_1.wav](output/example_1.wav)
+- [example_2.wav](output/example_2.wav)
 
 ## Troubleshooting
 
