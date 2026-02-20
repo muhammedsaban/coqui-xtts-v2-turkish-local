@@ -1,13 +1,17 @@
+![Project Logo](assets/logo.png)
+
 # Coqui XTTS v2 Turkish TTS (Local-First)
 
-Production-ready, local web arayuzu ile Turkce metni hizli sekilde sese ceviren Coqui XTTS v2 uygulamasi.
+**Primary TTS model:** [Coqui XTTS v2](https://docs.coqui.ai/en/latest/models/xtts.html)
 
-Bu proje sunucu gerektirmez. Kullanici uygulamayi kendi bilgisayarinda calistirir, ses dosyalari yerel olarak uretilir.
+A local-first Turkish text-to-speech app built with Coqui XTTS v2 and Gradio.
+Run it on your own computer and generate WAV files without managing a backend server.
 
 ## Table of Contents
 
 - [Overview](#overview)
 - [Key Features](#key-features)
+- [Recommended Voice](#recommended-voice)
 - [System Requirements](#system-requirements)
 - [Quick Start](#quick-start)
 - [Usage](#usage)
@@ -20,32 +24,44 @@ Bu proje sunucu gerektirmez. Kullanici uygulamayi kendi bilgisayarinda calistiri
 
 ## Overview
 
-Bu repo, Turkce icerik ureticileri icin pratik bir text-to-speech (TTS) akisi sunar:
+This project provides a simple workflow for Turkish content creators:
 
-1. Metni gir.
-2. Speaker sec.
-3. Hizi ayarla.
-4. Tek tikla WAV dosyasini al.
+1. Enter text
+2. Choose a speaker
+3. Adjust speed
+4. Generate a WAV file
 
-Arayuz `localhost` uzerinde calisir. Cikti dosyalari `output/` klasorune yazilir.
+The UI runs locally on `localhost`, and all outputs are saved to the `output/` folder.
 
 ## Key Features
 
-- Coqui XTTS v2 tabanli Turkce TTS
+- Turkish TTS powered by Coqui XTTS v2
 - Local Gradio UI (`http://127.0.0.1:7860`)
-- Modelden otomatik speaker listesi cekme
-- Speed kontrolu
-- Uzun metinlerde otomatik parcala + birlestir
-- CLI destegi
-- Local-first mimari (sunucu masrafi yok)
+- Automatic speaker list loading from model data
+- Speech speed control
+- Long text chunking and automatic merge
+- Optional CLI mode
+- Local-first architecture (no always-on server required)
+
+## Recommended Voice
+
+For consistent Turkish voiceover quality, the recommended speaker is:
+
+- `Chandra MacFarland`
+
+You can select this speaker from the `Speaker` dropdown in the web UI, or set it with:
+
+```powershell
+python app.py --mode cli --speaker "Chandra MacFarland"
+```
 
 ## System Requirements
 
 - OS: Windows 10/11
-- Python: `3.10` veya `3.11`
-- RAM: minimum 8 GB onerilir
-- GPU: opsiyonel (CUDA varsa daha hizli)
-- Internet: ilk model indirmesi icin gerekli
+- Python: `3.10` or `3.11`
+- RAM: 8 GB minimum recommended
+- GPU: Optional (faster with CUDA-enabled NVIDIA GPU)
+- Internet: Required for the first model download
 
 ## Quick Start
 
@@ -58,54 +74,52 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-### 2) Run web app
+### 2) Run the web app
 
 ```powershell
 .\start_gradio.bat
 ```
 
-Alternatif:
+Alternative:
 
 ```powershell
 python app.py --mode gradio
 ```
 
-### 3) Open UI
-
-Tarayici adresi:
+### 3) Open the UI
 
 `http://127.0.0.1:7860`
 
 ## Usage
 
-1. `Metin` alanina Turkce metni gir.
-2. `Speaker` dropdown'undan sesi sec.
-3. `Hiz` slider'i ile konusma hizini ayarla.
-4. `Ses Uret` butonuna tikla.
-5. Uretilen sesi dinle veya dosya olarak kullan.
+1. Enter your Turkish text in the `Metin` field.
+2. Select `Chandra MacFarland` in the `Speaker` dropdown (recommended).
+3. Adjust the `Hiz` slider.
+4. Click `Ses Uret`.
+5. Preview or reuse the generated WAV file.
 
 ## CLI Mode
 
-Interactive terminal modu:
+Run interactive terminal mode:
 
 ```powershell
 python app.py --mode cli
 ```
 
-Cikis komutlari: `q`, `quit`, `exit`
+Exit commands: `q`, `quit`, `exit`
 
 ## Configuration
 
-Temel parametreler:
+Main options:
 
-- `--mode {gradio,cli}`: Calisma modu
+- `--mode {gradio,cli}`: Execution mode
 - `--host`: Gradio host (default: `127.0.0.1`)
 - `--port`: Gradio port (default: `7860`)
-- `--speed`: Konusma hizi (default: `1.2`)
-- `--speaker`: Secili speaker adi
-- `--share`: Gecici public Gradio linki olusturur
+- `--speed`: Speech speed (default: `1.2`)
+- `--speaker`: Speaker name
+- `--share`: Creates a temporary public Gradio link
 
-Ornek:
+Example:
 
 ```powershell
 python app.py --mode gradio --host 127.0.0.1 --port 7860
@@ -113,42 +127,42 @@ python app.py --mode gradio --host 127.0.0.1 --port 7860
 
 ## Output
 
-- Tum ses dosyalari: `output/`
+- Directory: `output/`
 - Format: `.wav`
-- Uzun metinlerde tek dosya olarak birlestirilmis sonuc uretir
+- Long text is merged into a single final output file
 
 ## Troubleshooting
 
-### `gradio kurulu degil` hatasi
+### `gradio not installed` error
 
 ```powershell
 python -m pip install -r requirements.txt
 ```
 
-### Ilk acilista yavaslik
+### Slow first startup
 
-Model ilk kez indirildigi icin normaldir. Sonraki calistirmalar daha hizli olur.
+Expected behavior. The model is downloaded and initialized on first run.
 
-### Speaker listesi bos gorunuyor
+### Empty speaker list
 
-- `Speakerlari Yenile` butonunu kullan.
-- Internet baglantisini ve model indirmesini kontrol et.
-- Uygulamayi yeniden baslat.
+- Click `Speakerlari Yenile`
+- Check internet connection and model download status
+- Restart the app
 
-### CPU'da yavas calisma
+### Slow generation on CPU
 
-GPU zorunlu degil ancak hiz icin CUDA destekli NVIDIA GPU onerilir.
+GPU is not required, but generation is significantly faster with CUDA.
 
 ## Privacy
 
-- Metin ve ses dosyalari yerel calisir.
-- Varsayilan akista harici bir API'ye veri gonderilmez.
-- Uretilen ses dosyalari sadece sizin makinenizdeki `output/` klasorune yazilir.
+- Text and audio processing happens locally
+- No external API is required in the default workflow
+- Output files stay on your machine under `output/`
 
 ## License
 
-Bu projenin kodu `MIT` lisansi altinda dagitilir. Detay:
+This repository is released under the `MIT` license.
 
-`LICENSE`
+See: `LICENSE`
 
-Not: Coqui TTS kutuphanesi ve XTTS model lisanslari ayri kapsamda degerlendirilmelidir. Ticari kullanimdan once ilgili lisanslari ayrica kontrol edin.
+Note: Coqui TTS library and XTTS model licensing are separate. Review upstream licenses before commercial use.
