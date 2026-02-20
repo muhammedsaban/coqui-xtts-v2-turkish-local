@@ -17,7 +17,6 @@ Bu proje sunucu gerektirmez. Kullanici uygulamayi kendi bilgisayarinda calistiri
 - [Troubleshooting](#troubleshooting)
 - [Privacy](#privacy)
 - [License](#license)
-- [Project Checklist](#project-checklist)
 
 ## Overview
 
@@ -153,9 +152,3 @@ Bu projenin kodu `MIT` lisansi altinda dagitilir. Detay:
 `LICENSE`
 
 Not: Coqui TTS kutuphanesi ve XTTS model lisanslari ayri kapsamda degerlendirilmelidir. Ticari kullanimdan once ilgili lisanslari ayrica kontrol edin.
-
-## Project Checklist
-
-Paylasim oncesi kalite kontrol listesi:
-
-`PUBLISH_CHECKLIST.md`
