@@ -1,0 +1,5 @@
+TTS
+gradio>=4.44.0
+numpy
+soundfile
+torch
