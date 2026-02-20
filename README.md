@@ -1,8 +1,8 @@
-![Project Logo](assets/logo.png)
+![Project Logo](assets/logov2.png)
 
 # Coqui XTTS v2 Turkish TTS (Local-First)
 
-**Primary TTS model:** [Coqui XTTS v2](https://docs.coqui.ai/en/latest/models/xtts.html)
+**TTS model:** [Coqui XTTS v2](https://docs.coqui.ai/en/latest/models/xtts.html)
 
 A local-first Turkish text-to-speech app built with Coqui XTTS v2 and Gradio.
 Run it on your own computer and generate WAV files without managing a backend server.
