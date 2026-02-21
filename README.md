@@ -9,6 +9,7 @@ Run it on your own computer and generate WAV files without managing a backend se
 
 ## Table of Contents
 
+- [Live Demo (Hugging Face Space)](#live-demo-hugging-face-space)
 - [Overview](#overview)
 - [Web UI Preview](#web-ui-preview)
 - [Key Features](#key-features)
@@ -23,6 +24,12 @@ Run it on your own computer and generate WAV files without managing a backend se
 - [Troubleshooting](#troubleshooting)
 - [Privacy](#privacy)
 - [License](#license)
+
+## Live Demo (Hugging Face Space)
+
+Try the running demo here:
+
+- https://huggingface.co/spaces/muhammedsaban/coqui-xtts-v2-turkish-local
 
 ## Overview
 
